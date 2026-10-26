@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halloween Surprise</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #160d27;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#start {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: clamp(30px, 8vw, 55px);
+  color: orange;
+}
+
+button {
+  width: 90%;
+  max-width: 500px;
+  padding: 25px 10px;
+  border: none;
+  border-radius: 20px;
+  background: #ff7b00;
+  color: white;
+  font-size: clamp(40px, 12vw, 75px);
+  font-weight: bold;
+}
+
+#videoScreen {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: black;
+  align-items: center;
+  justify-content: center;
+}
+
+#videoScreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+</style>
+</head>
+
+<body>
+
+<div id="start">
+  <h1>🎃 Will you celebrate Halloween with me?</h1>
+  <p>Choose your answer...</p>
+  <button onclick="showVideo()">YES! 🎃</button>
+</div>
+
+<div id="videoScreen">
+  <video id="myVideo" controls playsinline>
+    <source src="surprise.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+function showVideo() {
+  document.getElementById("start").style.display = "none";
+
+  const screen = document.getElementById("videoScreen");
+  const video = document.getElementById("myVideo");
+
+  screen.style.display = "flex";
+  video.currentTime = 0;
+  video.play().catch(() => {
+    video.controls = true;
+  });
+}
+</script>
+
+</body>
+</html>
